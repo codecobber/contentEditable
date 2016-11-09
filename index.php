@@ -2,13 +2,15 @@
 <html>
 <head>
 
-<link rel="stylesheet" href="css/style.css" media="all" />
+<!-- Font Awsome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css" media="all" />
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="js/tempEdit.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/myjs.js"></script>
 
 </head>
-
 <body>
 
 <div id="mySidenav" class="sidenav">
@@ -17,35 +19,33 @@
   <a href="#">Services</a>
   <a href="#">Clients</a>
   <a href="#">Contact</a>
-  <a class="ea" id="s1" href="#">Edit 1</a>
-  <a class="ea" id="s2" href="#">Edit 2</a>
-  <a class="ea" id="s3" href="#">Edit 3</a>
-  <a class="ea" id="s4" href="#">Edit 4</a>
+  <a class="ea" id="editme" href="#">Edit</a>
+
+
 </div>
 
 
 <div id="main">
-  
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
 
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
 
 <div id="ec1">
 
-    <div>
-      <h1 id="ps1">Silly sausage . . .</h1>
-      <p id="ps2"></p>
-    </div>
+    <i id="s1" class="fa fa-pencil buttons" aria-hidden="true"></i>
+    <p class="content" id="ps1"></p>
 
-    <div><p id="ps3"></p></div>
-    <div><p id="ps4"></p></div>
+    <i id="s2" class="fa fa-pencil buttons" aria-hidden="true"></i>
+    <p class="content" id="ps2"></p>
+
+    <i id="s3" class="fa fa-pencil buttons" aria-hidden="true"></i>
+    <p class="content" id="ps3"></p>
+
+    <i id="s4" class="fa fa-pencil buttons" aria-hidden="true"></i>
+    <p class="content" id="ps4"></p>
+   
 
 </div>
 </div>
-
-
-
-
-
 
 <script>
 function openNav() {
@@ -58,7 +58,10 @@ function closeNav() {
     document.getElementById("main").style.marginLeft= "0";
 }
 </script>
-     
+
+
+        
+    
+
 </body>
 </html>
-
