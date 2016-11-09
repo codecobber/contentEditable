@@ -3,26 +3,34 @@
     
       $(document).ready(function(){
 
-           
+             //edit button
+            $('#editme').on('click',function(){
+                if($('.buttons').css('display')=="none"){
+                    $('.buttons').css('display','block');   
+                }
+                else{
+                    $('.buttons').css('display','none');  
+                }
+            });
 
-            //load data from files
+
+            //load data from
             $("#ps1").load("content/data_ps1.html");
             $("#ps2").load("content/data_ps2.html");
             $("#ps3").load("content/data_ps3.html");
             $("#ps4").load("content/data_ps4.html");
             
 
-
-            //set event handler
-            $('#ec1 *').on('click',function(){ 
-              event.stopPropagation();
-              var id = "#" + $(this).attr('id');
-              console.log(id);
+            $('.buttons').on('click',function(){ 
+                
+                var id = "#p" + $(this).attr('id');
+                var buttID = id.replace('p','');
+                 console.log(id);
 
                 //add red border
                 if( $(id).hasClass('borderClass') ){
                     $(id).removeClass('borderClass');
-                    $(id).removeAttr('contentEditable','false');
+                    $(id).attr('contentEditable','false');
                     
 
                 //get content 
@@ -45,7 +53,7 @@
                     
                 }
 
-
             });
-      });
+        });
+    
   
