@@ -1,17 +1,26 @@
 
 
+
+
     
       $(document).ready(function(){
 
-             //edit button
-            $('#editme').on('click',function(){
-                if($('.buttons').css('display')=="none"){
-                    $('.buttons').css('display','block');   
-                }
-                else{
-                    $('.buttons').css('display','none');  
-                }
-            });
+        function sendData(content,id){
+
+            //write to file
+            $.ajax({
+                type: 'POST',
+                url: 'writePage.php',
+                data: {content: content, id: id},
+                    success: function(response){
+                        $(id).html(response);
+                        }
+                }); 
+        }
+
+
+
+            
 
 
             //load data from
@@ -19,13 +28,14 @@
             $("#ps2").load("content/data_ps2.html");
             $("#ps3").load("content/data_ps3.html");
             $("#ps4").load("content/data_ps4.html");
-            
+            var id="";
+            var captured = "";
 
             $('.buttons').on('click',function(){ 
                 
-                var id = "#p" + $(this).attr('id');
-                var buttID = id.replace('p','');
-                 console.log(id);
+                id = "#p" + $(this).attr('id');
+                captured = $(id).html();
+
 
                 //add red border
                 if( $(id).hasClass('borderClass') ){
@@ -33,19 +43,9 @@
                     $(id).attr('contentEditable','false');
                     
 
-                //get content 
-                var captured = $(id).html();
-
-                //write to file
-                $.ajax({
-                    type: 'POST',
-                        url: 'writePage.php',
-                        data: {content: captured, id: id},
-                        success: function(response){
-                            $(id).html(response);
-                            
-                        }
-                }); 
+                //send content 
+                sendData(captured, id);
+                
 
                 }else{
                     $(id).addClass('borderClass');
@@ -54,6 +54,21 @@
                 }
 
             });
+
+             //edit button
+            $('#editme').on('click',function(){
+                if($('.buttons').css('display')=="none"){
+                    $('.buttons').css('display','block'); 
+                      
+                }
+                else{
+                    $('.buttons').css('display','none'); 
+                    $(id).removeClass('borderClass'); 
+                    captured = $(id).html();
+                    sendData(captured, id);
+                }
+            });
+
         });
     
   
